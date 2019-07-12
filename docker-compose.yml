@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  php:
+    container_name: php
+    build:
+      context: ./php-apache
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.4
+    environment:
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=rpassword
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+     - "8080:8080"
+    depends_on:
+      - db
+  node:
+    image: node:12.6
