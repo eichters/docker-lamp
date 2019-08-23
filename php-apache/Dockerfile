@@ -1,5 +1,6 @@
 FROM php:7.3-apache
 
+#TODO: Dynamic project name
 ARG URL=bowly-api
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/${URL}/public
