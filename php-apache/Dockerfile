@@ -1,7 +1,6 @@
 FROM php:7.3-apache
 
-#TODO: Dynamic project name
-ARG URL=bowly-api
+ARG URL
 
 ENV APACHE_DOCUMENT_ROOT /var/www/html/${URL}/public
 ENV COMPOSER_MEMORY_LIMIT "-1"

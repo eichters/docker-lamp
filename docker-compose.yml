@@ -5,6 +5,8 @@ services:
     container_name: php
     build:
       context: ./php-apache
+      args:
+        - URL
     volumes:
       - ./src:/var/www/html
     ports:
