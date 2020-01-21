@@ -2,7 +2,7 @@ version: '3'
 
 services:
   php:
-    container_name: php
+    container_name: php-${URL}
     build:
       context: ./php-apache
       args:
@@ -14,6 +14,7 @@ services:
     depends_on:
       - db-laravel
   db-laravel:
+    container_name: db-${URL}
     image: mariadb:10.4
     environment:
       - MYSQL_DATABASE=db
@@ -21,7 +22,7 @@ services:
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=rpassword
   adminer:
-    container_name: adminer-lamp
+    container_name: adminer-${URL}
     build:
       context: ./adminer
     ports:
@@ -30,6 +31,6 @@ services:
       - db-laravel
   maildev:
     image: djfarrelly/maildev
-    container_name: maildev-lamp
+    container_name: maildev-${URL}
     ports:
       - "1080:80"
